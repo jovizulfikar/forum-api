@@ -5,6 +5,7 @@ class UsersHandler {
     this._container = container;
 
     this.postUserHandler = this.postUserHandler.bind(this);
+    this.getUserHelloHandler = this.getUserHelloHandler.bind(this);
   }
 
   async postUserHandler(request, h) {
@@ -19,6 +20,10 @@ class UsersHandler {
     });
     response.code(201);
     return response;
+  }
+
+  async getUserHelloHandler(request) {
+    throw new Error('method not implemented');
   }
 }
 

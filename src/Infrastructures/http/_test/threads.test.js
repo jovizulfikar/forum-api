@@ -143,20 +143,7 @@ describe('/threads endpoint', () => {
 
     it('should response 200 when return thread data', async () => {
       // Arrange
-      // const commentUser = {
-      //   id: 'user-321',
-      //   username: 'johndoe',
-      // };
-
-      // await UsersTableTestHelper.addUser(commentUser);
       await UsersTableTestHelper.addUser({});
-
-      // const thread = {
-      //   id: 'thread-h_2FkLZhtgBKY2kh4CC02',
-      //   title: 'sebuah thread',
-      //   body: 'sebuah body thread',
-      //   owner: 'user-123',
-      // };
 
       await ThreadTableTestHelper.addThread({});
 

@@ -31,6 +31,7 @@ const PostThreadUseCase = require('../Applications/use_case/PostThreadUseCase');
 const PostCommentUseCase = require('../Applications/use_case/PostCommentUseCase');
 const DeleteCommentUseCase = require('../Applications/use_case/DeleteCommentUseCase');
 const GetThreadUseCase = require('../Applications/use_case/GetThreadUseCase');
+const SayHelloUseCase = require('../Applications/use_case/SayHelloUseCase');
 
 // creating container
 const container = createContainer();
@@ -244,6 +245,19 @@ container.register([
         {
           name: 'commentRepository',
           internal: CommentRepository.name,
+        },
+      ],
+    },
+  },
+  {
+    key: SayHelloUseCase.name,
+    Class: SayHelloUseCase,
+    parameter: {
+      injectType: 'destructuring',
+      dependencies: [
+        {
+          name: 'userRepository',
+          internal: UserRepository.name,
         },
       ],
     },

@@ -152,4 +152,42 @@ describe('/users endpoint', () => {
       expect(responseJson.message).toEqual('username tidak tersedia');
     });
   });
+
+  describe('when GET /users/{userId}/hello', () => {
+    it('should response 404 when user not found', async () => {
+      // Arrange
+      const userId = 'unknown';
+      const server = await createServer(container);
+
+      // Action
+      const response = await server.inject({
+        method: 'GET',
+        url: `/users/${userId}/hello`,
+      });
+
+      // Assert
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(404);
+      expect(responseJson.status).toEqual('user tidak ditemukan');
+    });
+
+    it('should response 200 when user found', async () => {
+      // Arrange
+      await UsersTableTestHelper.addUser({});
+      const userId = 'user-123';
+      const server = await createServer(container);
+
+      // Action
+      const response = await server.inject({
+        method: 'GET',
+        url: `/users/${userId}/hello`,
+      });
+
+      // Assert
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(404);
+      expect(responseJson.status).toEqual('user tidak ditemukan');
+      expect(responseJson.data.message).toEqual('Helo Dicoding Indonesia!');
+    });
+  });
 });

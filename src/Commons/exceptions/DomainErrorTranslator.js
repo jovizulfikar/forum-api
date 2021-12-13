@@ -33,6 +33,8 @@ DomainErrorTranslator._directories = {
   'THREAD.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('not meet data type spesification'),
   'GET_THREAD_USE_CASE.PAYLOAD_NOT_CONTAIN_NEEDED_PROPERTY': new InvariantError('payload not contain needed property'),
   'GET_THREAD_USE_CASE.PAYLOAD_NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('payload not meet data type spesification'),
+  'SAY_HELLO_USE_CASE.PAYLOAD_NOT_CONTAIN_NEEDED_PROPERTY': new InvariantError('payload not contain needed property'),
+  'SAY_HELLO_USE_CASE.PAYLOAD_NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('payload not meet data type spesification'),
 };
 
 module.exports = DomainErrorTranslator;

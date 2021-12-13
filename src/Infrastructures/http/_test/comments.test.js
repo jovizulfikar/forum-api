@@ -5,7 +5,7 @@ const container = require('../../container');
 const createServer = require('../createServer');
 const pool = require('../../database/postgres/pool');
 
-describe('/threads endpoint', () => {
+describe('/comments endpoint', () => {
   afterEach(async () => {
     await CommentTableTestHelper.cleanTable();
     await ThreadTableTestHelper.cleanTable();

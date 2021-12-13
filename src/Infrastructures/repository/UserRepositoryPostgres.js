@@ -67,6 +67,10 @@ class UserRepositoryPostgres extends UserRepository {
 
     return id;
   }
+
+  async getById(id) {
+    throw new Error('method not implemented');
+  }
 }
 
 module.exports = UserRepositoryPostgres;
