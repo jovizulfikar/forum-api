@@ -168,7 +168,8 @@ describe('/users endpoint', () => {
       // Assert
       const responseJson = JSON.parse(response.payload);
       expect(response.statusCode).toEqual(404);
-      expect(responseJson.status).toEqual('user tidak ditemukan');
+      expect(responseJson.status).toEqual('fail');
+      expect(responseJson.message).toEqual('user tidak ditemukan');
     });
 
     it('should response 200 when user found', async () => {
@@ -185,9 +186,9 @@ describe('/users endpoint', () => {
 
       // Assert
       const responseJson = JSON.parse(response.payload);
-      expect(response.statusCode).toEqual(404);
-      expect(responseJson.status).toEqual('user tidak ditemukan');
-      expect(responseJson.data.message).toEqual('Helo Dicoding Indonesia!');
+      expect(response.statusCode).toEqual(200);
+      expect(responseJson.status).toEqual('success');
+      expect(responseJson.data.message).toEqual('Hello Dicoding Indonesia!');
     });
   });
 });

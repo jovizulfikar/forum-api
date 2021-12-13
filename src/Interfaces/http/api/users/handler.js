@@ -1,4 +1,5 @@
 const AddUserUseCase = require('../../../../Applications/use_case/AddUserUseCase');
+const SayHelloUseCase = require('../../../../Applications/use_case/SayHelloUseCase');
 
 class UsersHandler {
   constructor(container) {
@@ -23,7 +24,15 @@ class UsersHandler {
   }
 
   async getUserHelloHandler(request) {
-    throw new Error('method not implemented');
+    const sayHelloUseCase = this._container.getInstance(SayHelloUseCase.name);
+    const message = await sayHelloUseCase.execute({ ...request.params });
+
+    return {
+      status: 'success',
+      data: {
+        message,
+      },
+    };
   }
 }
 
