@@ -4,11 +4,21 @@ class SayHelloUseCase {
   }
 
   async execute(payload) {
-    throw new Error('method not implemented');
+    this._verifyPayload(payload);
+    const { userId: id } = payload;
+    const { fullname } = await this._userRepository.getById(id);
+    return `Hello ${fullname}!`;
   }
 
-  async _verifyPayload() {
-    throw new Error('method not implemented');
+  _verifyPayload(payload) {
+    const { userId } = payload;
+    if (!userId) {
+      throw new Error('SAY_HELLO_USE_CASE.PAYLOAD_NOT_CONTAIN_NEEDED_PROPERTY');
+    }
+
+    if (typeof userId !== 'string') {
+      throw new Error('SAY_HELLO_USE_CASE.PAYLOAD_NOT_MEET_DATA_TYPE_SPECIFICATION');
+    }
   }
 }
 
